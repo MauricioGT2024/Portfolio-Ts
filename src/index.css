@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		font-family: 'Inter', system-ui, sans-serif;
+		scroll-behavior: smooth;
+	}
+
+	body {
+		@apply bg-primary text-textPrimary;
+	}
+}
+
+@layer components {
+	.btn-primary {
+		@apply px-6 py-3 rounded-lg bg-secondary text-primary font-medium
+           hover:bg-opacity-80 transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50;
+	}
+
+	/* Añade estos estilos para mejorar las animaciones */
+	.gradient-border {
+		position: relative;
+		&::before {
+			content: '';
+			position: absolute;
+			inset: -2px;
+			border-radius: inherit;
+			padding: 2px;
+			background: linear-gradient(45deg, #64ffda, transparent);
+			-webkit-mask: linear-gradient(#fff 0 0) content-box,
+				linear-gradient(#fff 0 0);
+			-webkit-mask-composite: xor;
+			mask-composite: exclude;
+		}
+	}
+}
+
+@layer components {
+	.section-title {
+		@apply text-3xl font-bold text-textPrimary mb-8;
+	}
+
+	.nav-link {
+		@apply cursor-pointer hover:text-secondary transition-colors duration-300;
+	}
+
+	.btn-primary {
+		@apply px-6 py-3 rounded-lg bg-secondary text-primary font-medium
+           hover:bg-opacity-80 transition-all duration-300;
+	}
+}
+
+.tooltip-container {
+	position: relative;
+}
+
+.tooltip {
+	visibility: hidden;
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #1a1a1a;
+	color: white;
+	text-align: center;
+	padding: 4px 8px;
+	border-radius: 6px;
+	font-size: 12px;
+	white-space: nowrap;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.tooltip-container:hover .tooltip {
+	visibility: visible;
+	opacity: 1;
+}
+
+/* Flecha del tooltip */
+.tooltip::after {
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #1a1a1a transparent transparent transparent;
+}

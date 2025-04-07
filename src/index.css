@@ -16,41 +16,35 @@
 @layer components {
 	.btn-primary {
 		@apply px-6 py-3 rounded-lg bg-secondary text-primary font-medium
-           hover:bg-opacity-80 transition-all duration-300
-           focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50;
+           hover:bg-accent-pink transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-accent-purple focus:ring-opacity-50
+           hover:shadow-glow transform hover:-translate-y-1;
 	}
 
-	/* Añade estos estilos para mejorar las animaciones */
-	.gradient-border {
-		position: relative;
-		&::before {
-			content: '';
-			position: absolute;
-			inset: -2px;
-			border-radius: inherit;
-			padding: 2px;
-			background: linear-gradient(45deg, #64ffda, transparent);
-			-webkit-mask: linear-gradient(#fff 0 0) content-box,
-				linear-gradient(#fff 0 0);
-			-webkit-mask-composite: xor;
-			mask-composite: exclude;
-		}
-	}
-}
-
-@layer components {
 	.section-title {
-		@apply text-3xl font-bold text-textPrimary mb-8;
+		@apply text-4xl font-bold text-textPrimary mb-8 relative
+           after:content-[''] after:block after:w-24 after:h-1 
+           after:bg-gradient-to-r after:from-secondary after:to-accent-purple after:mt-2;
 	}
 
 	.nav-link {
-		@apply cursor-pointer hover:text-secondary transition-colors duration-300;
+		@apply cursor-pointer hover:text-accent-blue transition-all duration-300
+           relative after:content-[''] after:block after:w-0 after:h-0.5 
+           after:bg-gradient-to-r after:from-accent-blue after:to-accent-purple
+           after:transition-all after:duration-300
+           hover:after:w-full;
 	}
 
-	.btn-primary {
-		@apply px-6 py-3 rounded-lg bg-secondary text-primary font-medium
-           hover:bg-opacity-80 transition-all duration-300;
+	.gradient-border {
+		@apply relative before:absolute before:inset-0 before:p-[2px]
+           before:bg-gradient-to-r before:from-secondary before:via-accent-purple before:to-accent-blue
+           before:rounded-lg before:mask-gradient;
 	}
+}
+
+.mask-gradient {
+	mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	mask-composite: exclude;
 }
 
 .tooltip-container {

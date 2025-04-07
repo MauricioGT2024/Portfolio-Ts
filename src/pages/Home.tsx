@@ -7,6 +7,7 @@ import Contact from '../components/Contact';
 import Skills from '../components/Skills';
 import { FaChevronDown } from 'react-icons/fa';
 import { Link } from 'react-scroll';
+import Footer from '../components/Footer';
 
 const Home = () => {
 	const controls = useAnimation();
@@ -103,6 +104,15 @@ const Home = () => {
 			>
 				<Contact />
 			</motion.section>
+      {/* Footer Section */}
+      <motion.footer
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+        className="py-20 bg-tertiary">
+          <Footer/>
+        </motion.footer>
 		</div>
 	);
 };
